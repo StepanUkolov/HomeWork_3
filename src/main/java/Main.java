@@ -53,7 +53,7 @@ public class Main {
         test3(organizationList, date4);
 
 
-        String money1 = "EU";
+        String money1 = "EUR";
         test4(organizationList, money1);
         String money2 = "USD";
         test4(organizationList, money2);
@@ -123,16 +123,8 @@ public class Main {
         List<Organization.Securities> securitiesList1 = new ArrayList<>();
         organizationList.stream().forEach(organization -> securitiesList1.addAll(organization.securities));
 
-        if (money.equals("EU")) {
-            securitiesList1.stream().filter(securities -> securities.currency.code.equals("EUR"))
-                    .forEach(securities -> System.out.println(securities.id + " " + securities.code + " " + securities.currency.code));
-        } else if (money.equals("USD")) {
-            securitiesList1.stream().filter(securities -> securities.currency.code.equals("USD"))
-                    .forEach(securities -> System.out.println(securities.id + " " + securities.code + " " + securities.currency.code));
-        } else if (money.equals("RUB")) {
-            securitiesList1.stream().filter(securities -> securities.currency.code.equals("RUB"))
-                    .forEach(securities -> System.out.println(securities.id + " " + securities.code + " " + securities.currency.code));
-        }
+        securitiesList1.stream().filter(securities -> securities.currency.code.equals(money))
+                .forEach(securities -> System.out.println(securities.id + " " + securities.code + " " + securities.currency.code));
 
         System.out.println();
     }
